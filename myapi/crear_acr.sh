@@ -5,15 +5,25 @@
 echo "Procedimiento para Crear ACR."
 echo "----------------------------------------------------"
 
-echo "Iniciando sesión en Azure..."
-# Iniciar sesión en Azure usando el código de dispositivo para autenticación
-az login --use-device-code
+echo "Este script te guiará para crear un Azure Container Registry (ACR) y subir una imagen Docker."
+echo "----------------------------------------------------"
 
+
+echo "Verificando sesión de Azure..."
+# Verificar si ya hay una sesión iniciada en Azure
+az account show &> /dev/null
 if [ $? -ne 0 ]; then
-    echo "❌ Error: Falló el inicio de sesión en Azure. Verifica tus credenciales."
-    exit 1
+  echo "No se ha iniciado sesión en Azure. Procediendo con el login..."
+  # Iniciar sesión en Azure usando el código de dispositivo para autenticación
+  az login --use-device-code
+  if [ $? -ne 0 ]; then
+      echo "❌ Error: Falló el inicio de sesión en Azure. Verifica tus credenciales."
+      exit 1
+  fi
+  echo "✅ Sesión iniciada correctamente."
+else
+  echo "✅ Ya tienes una sesión activa en Azure."
 fi
-echo "✅ Sesión iniciada correctamente."
 echo "----------------------------------------------------"
 echo "Ahora vamos a crear un Azure Container Registry (ACR) si no existe."
 echo "----------------------------------------------------"
