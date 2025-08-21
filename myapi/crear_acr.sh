@@ -24,6 +24,8 @@ if [ $? -ne 0 ]; then
 else
   echo "✅ Ya tienes una sesión activa en Azure."
 fi
+sleep 1
+
 echo "----------------------------------------------------"
 echo "Ahora vamos a crear un Azure Container Registry (ACR) si no existe."
 echo "----------------------------------------------------"
