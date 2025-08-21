@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Script interactivo para construir una imagen Docker y subirla a Azure Container Registry
+az acr create --resource-group desarrollo_clases --name acrtestwnr --sku Basic
 
+# Script interactivo para construir una imagen Docker y subirla a Azure Container Registry
 echo "Asistente para construir y registrar imágenes en ACR."
 echo "----------------------------------------------------"
 
@@ -34,7 +35,7 @@ echo "  - Servidor de Login: $acrLoginServer"
 echo "  - Nombre completo de la imagen: $fullImageName"
 echo "----------------------------------------------------"
 read -p "¿Es correcta esta información? (s/n): " confirm
-if [[ "$confirm" != "s" ]]; then
+if [ "$confirm" != "s" ]; then
     echo "Operación cancelada."
     exit 0
 fi
