@@ -14,9 +14,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expone el puerto en el que Gunicorn se ejecutará.
-EXPOSE 8000
+EXPOSE 80
 
 # Comando para ejecutar la aplicación cuando se inicie el contenedor.
 # Se enlaza a 0.0.0.0 para que sea accesible desde fuera del contenedor.
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "wsgi:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "wsgi:app"]
 

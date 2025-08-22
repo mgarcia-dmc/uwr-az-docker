@@ -1,7 +1,5 @@
 #!/bin/bash
 
-az acr create --resource-group desarrollo_clases --name acrtestwnr --sku Basic
-
 # Script interactivo para construir una imagen Docker y subirla a Azure Container Registry
 echo "Asistente para construir y registrar imágenes en ACR."
 echo "----------------------------------------------------"
